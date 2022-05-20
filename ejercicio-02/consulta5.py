@@ -10,5 +10,5 @@ engine = create_engine('sqlite:///basepaises.db')
 Session = sessionmaker(bind=engine)
 session = Session()
 
-paises = session.query(Paises).filter(Paises.continente=="EU").order_by(Paises.capital).all()
+paises = session.query(Paises).filter(or_(Paises.pais.like("%uador"), Paises.capital.like("%ito"))).all()
 print(paises)
